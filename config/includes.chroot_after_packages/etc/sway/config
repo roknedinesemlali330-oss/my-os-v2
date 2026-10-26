@@ -1,0 +1,28 @@
+# إعدادات مدير النوافذ sway.
+# sway يرسم النوافذ فقط، والرف والمشغّل يرسمهم Quickshell.
+
+set $mod Mod4
+
+# اللوحة العلوية الافتراضية غير مطلوبة، نستخدم الرف الخاص بنا
+output * bg #dce7f7 solid_color
+
+# تباعد بين النوافذ وبدون حدود سميكة
+gaps inner 8
+gaps outer 4
+default_border pixel 2
+
+# لغات الكتابة: إنجليزي وعربي، والتبديل بـ Alt+Shift
+input * {
+    xkb_layout "us,ar"
+    xkb_options "grp:alt_shift_toggle"
+}
+
+# اختصارات
+bindsym $mod+Return exec foot
+bindsym $mod+b exec firefox-esr
+bindsym $mod+Shift+q kill
+bindsym $mod+Shift+e exec swaymsg exit
+floating_modifier $mod
+
+# شغّل واجهتنا
+exec quickshell -p /etc/myos/shell.qml

@@ -1,0 +1,5 @@
+# مستودع backports يملك أولوية منخفضة افتراضياً.
+# هنا نرفع أولوية quickshell فقط ليُثبَّت منه.
+Package: quickshell
+Pin: release a=trixie-backports
+Pin-Priority: 600

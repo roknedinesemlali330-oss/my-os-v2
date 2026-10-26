@@ -1,0 +1,26 @@
+# قائمة الحزم: هذا الملف هو "dependencies" مشروعنا.
+# كل سطر = حزمة من مستودعات Debian تُثبَّت داخل النظام.
+
+# مدير النوافذ والطرفية
+sway
+foot
+xwayland
+
+# أدوات Qt التي يحتاجها Quickshell لرسم الواجهة
+qt6-wayland
+qml6-module-qtquick
+qml6-module-qtquick-controls
+qml6-module-qtquick-layouts
+qml6-module-qtquick-templates
+qml6-module-qtquick-window
+qml6-module-qtqml-workerscript
+
+# الواجهة نفسها (تأتي من مستودع backports، انظر config/archives)
+quickshell
+
+# أساسيات النظام
+network-manager
+firefox-esr
+fonts-noto-core
+fonts-noto-ui-core
+mesa-vulkan-drivers
