@@ -5,6 +5,9 @@ on:
     branches: [main]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -26,8 +29,9 @@ jobs:
           lb config
           lb build
 
-      - name: Upload ISO
-        uses: actions/upload-artifact@v4
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
         with:
-          name: myos-iso
-          path: "*.iso"
+          tag_name: build-${{ github.run_number }}
+          name: MyOS build ${{ github.run_number }}
+          files: "*.iso"
