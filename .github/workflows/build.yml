@@ -1,0 +1,33 @@
+name: build-iso
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: debian:trixie
+      options: --privileged
+    steps:
+      - name: Install tools
+        run: |
+          apt-get update
+          apt-get install -y git ca-certificates live-build debootstrap xorriso squashfs-tools
+
+      - uses: actions/checkout@v4
+
+      - name: Build system
+        run: |
+          chmod +x auto/*
+          lb clean --purge || true
+          lb config
+          lb build
+
+      - name: Upload ISO
+        uses: actions/upload-artifact@v4
+        with:
+          name: myos-iso
+          path: "*.iso"
